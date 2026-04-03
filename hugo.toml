@@ -1,0 +1,40 @@
+baseURL = "https://dennytsai-arch.github.io/"
+languageCode = "en-us"
+title = "Denny Tsai"
+theme = "PaperMod"
+paginate = 10
+
+[params]
+  author = "Denny Tsai"
+  description = "Personal blog and notes"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+
+  [params.homeInfoParams]
+    Title = "Hi, I'm Denny"
+    Content = "Welcome to my personal site. I write about things I find interesting."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/dennytsai-arch"
+
+[menu]
+  [[menu.main]]
+    name = "Blog"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Archive"
+    url = "/archives/"
+    weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
