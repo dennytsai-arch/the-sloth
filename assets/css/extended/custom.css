@@ -179,16 +179,20 @@ a:hover {
 .fb-follow-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     margin-top: 0.75rem;
-    padding: 6px;
-    color: var(--secondary) !important;
-    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    background: #1877f2;
+    color: #ffffff !important;
+    border-radius: 50%;
     text-decoration: none !important;
-    transition: color 0.15s ease;
+    transition: background 0.15s ease;
 }
 
 .fb-follow-btn:hover {
-    color: #1877f2 !important;
+    background: #1560cc;
+    color: #ffffff !important;
 }
 
 /* ── Hero banner ── */
