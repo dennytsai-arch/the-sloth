@@ -175,6 +175,23 @@ a:hover {
     color: var(--secondary);
 }
 
+/* ── Hero banner ── */
+.hero-banner {
+    width: 100%;
+    max-height: 420px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
 /* ── Post page layout ── */
 .post-single {
     background: var(--entry);
