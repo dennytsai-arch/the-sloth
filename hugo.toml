@@ -16,11 +16,8 @@ paginate = 10
 
   [params.homeInfoParams]
     Title = "慢速前進的懶惰研究者"
-    Content = "ゆっくり進む"
+    Content = ""
 
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/dennytsai-arch"
 
 [menu]
   [[menu.main]]
