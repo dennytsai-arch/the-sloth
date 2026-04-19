@@ -175,6 +175,27 @@ a:hover {
     color: var(--secondary);
 }
 
+/* ── Facebook follow button ── */
+.fb-follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 0.75rem;
+    padding: 7px 16px;
+    background: #1877f2;
+    color: #ffffff !important;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: background 0.15s ease;
+}
+
+.fb-follow-btn:hover {
+    background: #1560cc;
+    color: #ffffff !important;
+}
+
 /* ── Hero banner ── */
 .hero-banner {
     width: 100%;
