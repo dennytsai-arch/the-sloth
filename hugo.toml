@@ -1,6 +1,6 @@
-baseURL = "https://dennytsai-arch.github.io/"
+baseURL = "https://dennytsai-arch.github.io/the-sloth/"
 languageCode = "en-us"
-title = "Sloth Bookstore"
+title = "The Sloth"
 theme = "PaperMod"
 paginate = 10
 
@@ -15,8 +15,8 @@ paginate = 10
   ShowCodeCopyButtons = true
 
   [params.homeInfoParams]
-    Title = "Hi, I'm Denny"
-    Content = "Welcome to my personal site. I write about things I find interesting."
+    Title = "慢速前進的懶惰研究者"
+    Content = "ゆっくり進む"
 
   [[params.socialIcons]]
     name = "github"
