@@ -5,7 +5,7 @@ theme = "PaperMod"
 paginate = 10
 
 [params]
-  author = "Denny Tsai"
+  hideAuthor = true
   description = "Personal blog and notes"
   defaultTheme = "auto"
   ShowReadingTime = true
