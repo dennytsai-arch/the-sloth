@@ -1,7 +1,7 @@
 ---
 title: Title
-date: 2026-04-03
-draft: true
+date: 2026-04-19
+draft: false
 tags:
 cover:
   image: https://your-image-url.jpg
