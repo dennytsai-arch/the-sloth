@@ -212,6 +212,90 @@ a:hover {
     display: block;
 }
 
+/* ── Card grid layout ── */
+.post-entry {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.post-entry:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+[data-theme="dark"] .post-entry:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* Cover image */
+.post-entry .entry-cover {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 0;
+    margin: 0;
+}
+
+.post-entry .entry-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.post-entry:hover .entry-cover img {
+    transform: scale(1.04);
+}
+
+/* Card body */
+.post-entry .entry-header,
+.post-entry .entry-content,
+.post-entry .entry-footer {
+    padding: 0 1.2rem;
+}
+
+.post-entry .entry-header {
+    padding-top: 1rem;
+}
+
+.post-entry .entry-footer {
+    padding-bottom: 1rem;
+    margin-top: auto;
+}
+
+.post-entry .entry-header h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    margin-bottom: 0.4rem;
+}
+
+.post-entry .entry-content p {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Grid layout for the list */
+.posts-list,
+#top-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
 /* ── Post page layout ── */
 .post-single {
     background: var(--entry);
