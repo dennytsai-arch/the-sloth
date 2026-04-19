@@ -1,0 +1,176 @@
+/* Custom typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── Light mode (day) ── */
+:root {
+    --theme: #f5f5f5;
+    --entry: #ffffff;
+    --primary: #0a0a0a;
+    --secondary: #555555;
+    --tertiary: #e0e0e0;
+    --content: #1a1a1a;
+    --border: #e0e0e0;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    color-scheme: light;
+}
+
+/* ── Dark mode ── */
+:root[data-theme="dark"] {
+    --theme: #0a0a0f;
+    --entry: #111118;
+    --primary: #f0f0f0;
+    --secondary: #888899;
+    --tertiary: #1e1e2a;
+    --content: #d0d0e0;
+    --border: #1e1e2a;
+    --code-block-bg: #0d0d14;
+    --code-bg: #111118;
+    --accent: #3b82f6;
+    --accent-hover: #60a5fa;
+    color-scheme: dark;
+}
+
+/* ── Base typography ── */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* ── Header / nav ── */
+.nav {
+    border-bottom: 1px solid var(--border);
+}
+
+#site-header .logo a,
+.logo a {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.03em;
+    color: var(--primary);
+}
+
+[data-theme="dark"] .logo a {
+    color: #ffffff;
+}
+
+/* ── Post titles ── */
+.post-title,
+.entry-title {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+h1, h2, h3 {
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}
+
+/* ── Links ── */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+.post-content a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.post-content a:hover {
+    color: var(--accent-hover);
+    text-decoration-color: var(--accent-hover);
+}
+
+/* ── Entry cards ── */
+.entry-cover,
+.entry-header {
+    border-radius: 6px;
+}
+
+.entry {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.entry:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .entry {
+    background: var(--entry);
+}
+
+/* ── Home info ── */
+.home-info-container .entry-content p {
+    font-size: 1.05rem;
+    color: var(--secondary);
+}
+
+/* ── Code blocks ── */
+.post-content pre {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+[data-theme="dark"] .post-content pre {
+    border-color: #1e1e2a;
+}
+
+/* ── Tags ── */
+.post-tags a {
+    background: var(--tertiary);
+    color: var(--secondary);
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.post-tags a:hover {
+    background: var(--accent);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ── Share buttons ── */
+.share-buttons {
+    gap: 8px;
+}
+
+.share-buttons a {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--secondary);
+    background: var(--entry);
+    transition: all 0.15s ease;
+    text-decoration: none;
+}
+
+.share-buttons a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, var(--entry));
+}
+
+/* ── Footer ── */
+.footer {
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--secondary);
+}
