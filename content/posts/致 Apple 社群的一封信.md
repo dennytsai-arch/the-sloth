@@ -8,7 +8,7 @@ cover:
   alt: Cover image
   hiddenInList: false
 ---
-![[content/image/HGYPkLSaMAAWZOJ.png]]
+![Tim Cook Letter](/images/HGYPkLSaMAAWZOJ.png)
 
 致 Apple 社群的每一位：
 
