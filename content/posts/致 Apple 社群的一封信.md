@@ -4,11 +4,10 @@ date: 2026-04-21
 draft: false
 tags:
 cover:
-  image: https://your-image-url.jpg
-  alt: Cover image
+  image: /images/HGYPkLSaMAAWZOJ.png
+  alt: Tim Cook Letter
   hiddenInList: false
 ---
-![Tim Cook Letter](../../images/HGYPkLSaMAAWZOJ.png)
 致 Apple 社群的每一位：
 
 過去 15 年來，我幾乎每天早上都以同樣的方式開啟新的一天。我打開電子郵件，閱讀前一天從世界各地 Apple 使用者寄來的信件。
