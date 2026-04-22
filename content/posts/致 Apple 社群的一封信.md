@@ -8,7 +8,7 @@ cover:
   alt: Cover image
   hiddenInList: false
 ---
-![[HGYPkLSaMAAWZOJ.png]]
+![[content/image/HGYPkLSaMAAWZOJ.png]]
 
 致 Apple 社群的每一位：
 
