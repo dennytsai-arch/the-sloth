@@ -1,5 +1,5 @@
 ---
-title: 《What You Talk About When You Talk About Haruki Murakami》
+title: What You Talk About When You Talk About Haruki Murakami
 date: 2026-04-19
 draft: false
 tags:

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A Hugo static blog called "The Sloth" (慢速前進的懶惰研究者), deployed to GitHub Pages at `https://dennytsai-arch.github.io/the-sloth/`. Posts are written in Traditional Chinese. The repo doubles as an Obsidian vault for drafting.
+A Hugo static blog called "The Sloth" (慢速前進的懶惰書店), deployed to GitHub Pages at `https://dennytsai-arch.github.io/the-sloth/`. Posts are written in Traditional Chinese. The repo doubles as an Obsidian vault for drafting.
 
 ## Commands
 
