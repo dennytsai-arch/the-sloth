@@ -3,6 +3,8 @@ title: What You Talk About When You Talk About Haruki Murakami
 date: 2026-04-19
 draft: false
 tags:
+categories:
+  - Exhibition
 cover:
 ---
 ![[2cac1d4175ed42aeb69854a1803ddceb20260209023031.jpg]]
