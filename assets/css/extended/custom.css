@@ -145,6 +145,11 @@ a:hover {
     text-decoration: none;
 }
 
+/* ── Show covers on taxonomy (category/tag) list pages ── */
+.tag-entry .entry-cover {
+    display: block;
+}
+
 /* ── Category badge ── */
 .post-category {
     display: inline-block;
