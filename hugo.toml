@@ -26,13 +26,29 @@ paginate = 10
     url = "/posts/"
     weight = 1
   [[menu.main]]
+    name = "Book"
+    url = "/categories/book/"
+    weight = 2
+  [[menu.main]]
+    name = "Exhibition"
+    url = "/categories/exhibition/"
+    weight = 3
+  [[menu.main]]
+    name = "Review"
+    url = "/categories/review/"
+    weight = 4
+  [[menu.main]]
+    name = "Design"
+    url = "/categories/design/"
+    weight = 5
+  [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 2
+    weight = 6
   [[menu.main]]
     name = "Archive"
     url = "/archives/"
-    weight = 3
+    weight = 7
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
