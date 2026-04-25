@@ -145,6 +145,35 @@ a:hover {
     text-decoration: none;
 }
 
+/* ── Category badge ── */
+.post-category {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    padding: 2px 10px;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.post-category:hover {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.entry-category {
+    margin-bottom: 0.4rem;
+}
+
+.post-category-wrap {
+    margin-bottom: 0.6rem;
+}
+
 /* ── Share buttons ── */
 .share-buttons {
     gap: 10px;
