@@ -195,11 +195,17 @@ a:hover {
 }
 
 /* Nav bar icons */
+.menu a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .nav-cat-icon {
     width: 15px;
     height: 15px;
-    margin-right: 5px;
     opacity: 0.8;
+    flex-shrink: 0;
 }
 
 /* Category landing page h1 icon */
