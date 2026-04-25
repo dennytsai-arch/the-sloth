@@ -33,7 +33,7 @@
         {{- $processableFormats = $processableFormats | append "webp" -}}
     {{- end -}}
 
-    {{- $imgdl := $coverImage | relURL }}
+    {{- $imgdl := $coverImage | strings.TrimPrefix "/" | absURL }}
     {{- if $cover -}}
         {{- $imgdl = $cover.Permalink }}
     {{- end -}}
