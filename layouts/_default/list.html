@@ -8,6 +8,7 @@
 <header class="page-header">
   {{- partial "breadcrumbs.html" . }}
   <h1>
+    {{- if eq .Kind "term" }}<span class="category-page-icon category-icon-{{ .Title | lower }}"></span>{{- end }}
     {{ .Title }}
     {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
     {{- with .OutputFormats.Get "rss" }}
@@ -70,7 +71,7 @@
   <header class="entry-header">
     {{- with (.GetTerms "categories") }}
     <div class="entry-category">
-      {{- range . }}<a href="{{ .Permalink }}" class="post-category">{{ .LinkTitle }}</a>{{- end }}
+      {{- range . }}<a href="{{ .Permalink }}" class="post-category post-category-{{ .LinkTitle | lower }}">{{ .LinkTitle }}</a>{{- end }}
     </div>
     {{- end }}
     <h2 class="entry-hint-parent">

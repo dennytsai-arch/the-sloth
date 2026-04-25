@@ -25,18 +25,22 @@ paginate = 10
     name = "Book"
     url = "/categories/book/"
     weight = 2
+    pre = '<span class="nav-cat-icon nav-cat-book"></span>'
   [[menu.main]]
     name = "Exhibition"
     url = "/categories/exhibition/"
     weight = 3
+    pre = '<span class="nav-cat-icon nav-cat-exhibition"></span>'
   [[menu.main]]
     name = "Review"
     url = "/categories/review/"
     weight = 4
+    pre = '<span class="nav-cat-icon nav-cat-review"></span>'
   [[menu.main]]
     name = "Design"
     url = "/categories/design/"
     weight = 5
+    pre = '<span class="nav-cat-icon nav-cat-design"></span>'
   [[menu.main]]
     name = "Archive"
     url = "/archives/"

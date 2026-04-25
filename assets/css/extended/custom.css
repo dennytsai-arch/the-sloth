@@ -179,6 +179,78 @@ a:hover {
     margin-bottom: 0.6rem;
 }
 
+/* ── Category icons (nav, page header, badge) ── */
+.nav-cat-icon,
+.category-page-icon,
+.post-category::before {
+    display: inline-block;
+    background-color: currentColor;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    vertical-align: middle;
+}
+
+/* Nav bar icons */
+.nav-cat-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    opacity: 0.8;
+}
+
+/* Category landing page h1 icon */
+.category-page-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    background-color: var(--accent);
+    opacity: 1;
+}
+
+/* Post category badge icon */
+.post-category::before {
+    content: '';
+    width: 11px;
+    height: 11px;
+    margin-right: 4px;
+    opacity: 0.85;
+    position: relative;
+    top: -1px;
+}
+
+/* Per-category mask paths */
+.nav-cat-book,
+.category-icon-book,
+.post-category-book::before {
+    -webkit-mask-image: url('/the-sloth/icons/book.svg');
+    mask-image: url('/the-sloth/icons/book.svg');
+}
+
+.nav-cat-exhibition,
+.category-icon-exhibition,
+.post-category-exhibition::before {
+    -webkit-mask-image: url('/the-sloth/icons/exhibition.svg');
+    mask-image: url('/the-sloth/icons/exhibition.svg');
+}
+
+.nav-cat-review,
+.category-icon-review,
+.post-category-review::before {
+    -webkit-mask-image: url('/the-sloth/icons/review.svg');
+    mask-image: url('/the-sloth/icons/review.svg');
+}
+
+.nav-cat-design,
+.category-icon-design,
+.post-category-design::before {
+    -webkit-mask-image: url('/the-sloth/icons/design.svg');
+    mask-image: url('/the-sloth/icons/design.svg');
+}
+
 /* ── Share buttons ── */
 .share-buttons {
     gap: 10px;
