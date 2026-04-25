@@ -147,25 +147,37 @@ a:hover {
 
 /* ── Share buttons ── */
 .share-buttons {
-    gap: 8px;
+    gap: 10px;
 }
 
 .share-buttons a {
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 6px 14px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--secondary);
-    background: var(--entry);
-    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #3a3a3a;
+    color: #aaaaaa;
+    transition: background 0.15s ease, color 0.15s ease;
     text-decoration: none;
 }
 
+[data-theme="dark"] .share-buttons a {
+    background: #2a2a2a;
+    color: #888888;
+}
+
 .share-buttons a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 8%, var(--entry));
+    background: #4a4a4a;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.share-buttons a svg {
+    width: 18px;
+    height: 18px;
 }
 
 /* ── Footer ── */
