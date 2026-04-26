@@ -2,6 +2,7 @@
 title: AI 人才正從矽谷流向深圳
 date: 2026-04-26
 draft: false
+slug: ai-talent-silicon-valley-to-shenzhen
 tags:
 cover:
   image: /images/shenzen.jpg
