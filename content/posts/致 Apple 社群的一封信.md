@@ -2,6 +2,7 @@
 title: 致 Apple 社群的一封信
 date: 2026-04-21
 draft: false
+slug: letter-to-apple-community
 tags:
 categories:
   - Review
