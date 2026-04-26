@@ -36,6 +36,7 @@ Deployment is fully automated: pushing to `main` triggers `.github/workflows/hug
 title: Title
 date: 2026-04-19
 draft: true
+slug: english-slug-here
 tags:
 cover:
   image: /images/filename.png
@@ -43,6 +44,10 @@ cover:
   hiddenInList: false
 ---
 ```
+
+## Slug rule
+
+Hugo derives the URL from the filename. Chinese filenames produce percent-encoded URLs (e.g. `/posts/ai%E4%BA%BA%E6%89%8D.../`) that are ugly and fragile. **Always add a `slug` field whenever the post title contains any Chinese characters.** The slug must be lowercase ASCII with hyphens — a short English translation of the title is ideal (e.g. `slug: from-taste-to-personality`). Never omit the slug for Chinese-titled posts, even for drafts, so it is set before first publish.
 
 ## Image path gotcha
 
