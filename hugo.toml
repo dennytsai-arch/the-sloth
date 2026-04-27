@@ -16,7 +16,7 @@ paginate = 10
   hideSummary = true
 
   [params.homeInfoParams]
-    Title = "慢速前進的懶惰書店"
+    Title = "緩慢前進的懶惰書店"
     Content = ""
 
 
