@@ -5,6 +5,9 @@ draft: false
 slug: palantir-technological-republic
 tags:
 cover:
+  image: /images/The Technological Republic.png
+  alt: The Technological Republic
+  hiddenInList: false
 categories:
   - Book
 ---
