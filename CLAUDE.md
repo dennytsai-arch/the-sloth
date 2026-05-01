@@ -64,7 +64,8 @@ Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `
 ## Files to never commit
 
 - `無題のファイル.md` — Obsidian's auto-created untitled scratch file, always lives at the repo root untracked. It is **not** gitignored; never stage or commit it.
-- `archetypes/default.md` — do not use this as a post template; it is outdated and lacks `slug`, `categories`, and `cover` fields. Use `content/posts/Template.md` as the reference instead.
+- Any other stray `.md` files at the repo root (e.g. date-named files like `2026-04-19.md`) — Obsidian sometimes creates these; never stage or commit them. Posts belong under `content/posts/`.
+- `archetypes/default.md` — do not use this as a post template; it is outdated and lacks `slug`, `categories`, and `cover` fields. Use the frontmatter template in the **Post frontmatter template** section above as the canonical reference instead.
 
 ## Image path gotcha
 
