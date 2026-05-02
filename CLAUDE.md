@@ -23,7 +23,7 @@ Deployment is fully automated: pushing to `main` triggers `.github/workflows/hug
 
 ## Project structure
 
-- **`content/posts/`** — blog posts as Markdown files (Chinese filenames are fine); `Template.md` here is an Obsidian drafting template (`draft: true`), never published
+- **`content/posts/`** — blog posts as Markdown files (Chinese filenames are fine)
 - **`static/images/`** — images served at `/images/`; this is where cover images live
 - **`static/icons/`** — SVG icons for the four category nav items
 - **`layouts/partials/`** — overrides of PaperMod partials: `cover.html` and `home_info.html`
