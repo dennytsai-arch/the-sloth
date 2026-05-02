@@ -23,7 +23,7 @@ Deployment is fully automated: pushing to `main` triggers `.github/workflows/hug
 
 ## Project structure
 
-- **`content/posts/`** — blog posts as Markdown files (Chinese filenames are fine)
+- **`content/posts/`** — blog posts as Markdown files (Chinese filenames are fine); `Template.md` is the drafting template (`draft: true`), never published
 - **`static/images/`** — images served at `/images/`; this is where cover images live
 - **`static/icons/`** — SVG icons for the four category nav items
 - **`layouts/partials/`** — overrides of PaperMod partials: `cover.html` and `home_info.html`
@@ -65,7 +65,7 @@ Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `
 
 - `無題のファイル.md` — Obsidian's auto-created untitled scratch file, always lives at the repo root untracked. It is **not** gitignored; never stage or commit it.
 - Any other stray `.md` files at the repo root (e.g. date-named files like `2026-04-19.md`) — Obsidian sometimes creates these; never stage or commit them. Posts belong under `content/posts/`.
-- `archetypes/default.md` — do not use this as a post template; it is outdated and lacks `slug`, `categories`, and `cover` fields. Use the frontmatter template in the **Post frontmatter template** section above as the canonical reference instead.
+- `archetypes/default.md` — do not use this as a post template; it is outdated and lacks `slug`, `categories`, and `cover` fields. Use `content/posts/Template.md` instead.
 
 ## Image path gotcha
 
