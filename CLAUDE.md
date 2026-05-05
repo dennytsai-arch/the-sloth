@@ -73,6 +73,12 @@ The site lives at a subdirectory (`/the-sloth/`). Hugo's `relURL` resolves cover
 
 Exception: `layouts/partials/home_info.html` hardcodes the hero banner path as `/the-sloth/images/hero.png` because it bypasses Hugo's URL processing. If the `baseURL` subdirectory ever changes, update that partial manually.
 
+## OG / Twitter card image URLs
+
+PaperMod's default `opengraph.html` and `twitter_cards.html` use `absURL` directly on the cover image path. When the path starts with `/` (e.g. `/images/foo.jpg`), Hugo's `absURL` drops the subdirectory, producing `https://dennytsai-arch.github.io/images/foo.jpg` instead of the correct `…/the-sloth/images/foo.jpg`. This breaks link preview thumbnails in messaging apps and social media.
+
+Both templates are overridden in `layouts/partials/templates/` using `strings.TrimLeft "/" | absURL` instead of bare `absURL`. Do not revert this. If PaperMod is ever updated and the upstream templates change, re-apply this fix to the local overrides.
+
 ## Customisation points
 
 - **Theme config**: `hugo.toml` — PaperMod params, menu, outputs
