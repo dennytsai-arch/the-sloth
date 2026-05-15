@@ -295,12 +295,19 @@ a:hover {
     color: var(--secondary);
 }
 
+/* ── Social buttons row ── */
+.home-social-btns {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
 /* ── Facebook follow button ── */
 .fb-follow-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0.75rem;
     width: 36px;
     height: 36px;
     background: #1877f2;
@@ -312,6 +319,25 @@ a:hover {
 
 .fb-follow-btn:hover {
     background: #1560cc;
+    color: #ffffff !important;
+}
+
+/* ── RSS follow button ── */
+.rss-follow-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #f26522;
+    color: #ffffff !important;
+    border-radius: 50%;
+    text-decoration: none !important;
+    transition: background 0.15s ease;
+}
+
+.rss-follow-btn:hover {
+    background: #d4541a;
     color: #ffffff !important;
 }
 
