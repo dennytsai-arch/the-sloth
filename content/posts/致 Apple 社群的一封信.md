@@ -5,7 +5,7 @@ draft: false
 slug: letter-to-apple-community
 tags:
 categories:
-  - Review
+  - Post
 cover:
   image: /images/HGYPkLSaMAAWZOJ.png
   alt: Tim Cook Letter

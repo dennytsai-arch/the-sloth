@@ -5,7 +5,7 @@ draft: false
 slug: chexy-rewards-everyday-payments
 tags:
 categories:
-  - Review
+  - Post
 cover:
   image: /images/Chexy.jpg
   alt: Chexy 支付平台

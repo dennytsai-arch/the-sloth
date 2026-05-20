@@ -5,7 +5,7 @@ draft: false
 slug: ipod-comeback-young-listeners
 tags:
 categories:
-  - Review
+  - Post
 cover:
   image: /images/chris-Xzh6HCSo-ys-unsplash.jpg
   alt: iPod

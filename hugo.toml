@@ -32,10 +32,10 @@ paginate = 10
     weight = 3
     pre = '<span class="nav-cat-icon nav-cat-exhibition"></span>'
   [[menu.main]]
-    name = "Review"
-    url = "/categories/review/"
+    name = "Post"
+    url = "/categories/post/"
     weight = 4
-    pre = '<span class="nav-cat-icon nav-cat-review"></span>'
+    pre = '<span class="nav-cat-icon nav-cat-post"></span>'
   [[menu.main]]
     name = "Design"
     url = "/categories/design/"

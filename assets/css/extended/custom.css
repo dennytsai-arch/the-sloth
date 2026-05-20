@@ -239,11 +239,11 @@ a:hover {
     mask-image: url('/the-sloth/icons/exhibition.svg');
 }
 
-.nav-cat-review,
-.category-icon-review,
-.post-category-review::before {
-    -webkit-mask-image: url('/the-sloth/icons/review.svg');
-    mask-image: url('/the-sloth/icons/review.svg');
+.nav-cat-post,
+.category-icon-post,
+.post-category-post::before {
+    -webkit-mask-image: url('/the-sloth/icons/post.svg');
+    mask-image: url('/the-sloth/icons/post.svg');
 }
 
 .nav-cat-design,

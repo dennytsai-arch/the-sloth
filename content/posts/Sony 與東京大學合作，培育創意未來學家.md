@@ -9,7 +9,7 @@ cover:
   alt: Sony 與東京大學合作，培育創意未來學家
   hiddenInList: false
 categories:
-  - Review
+  - Post
 ---
 Sony 與東大合作的跨學院計畫中，設立了[創意未來人倡議團體](https://cfi.iii.u-tokyo.ac.jp/)，以發掘與培育這樣的人才。
 

@@ -9,7 +9,7 @@ cover:
   alt: 深圳城市景觀
   hiddenInList: false
 categories:
-  - Review
+  - Post
 ---
 據 Financial Times 指出，長期以來吸引全球頂尖工程師與研究者的矽谷，近一年開始出現結構性的變化。
 
