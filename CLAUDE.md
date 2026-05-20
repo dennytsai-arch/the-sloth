@@ -24,6 +24,8 @@ Deployment is fully automated: pushing to `main` triggers `.github/workflows/hug
 ## Project structure
 
 - **`content/posts/`** — blog posts as Markdown files (Chinese filenames are fine); `Template.md` is the drafting template (`draft: true`), never published
+- **`content/about.md`** / **`content/archives.md`** — standalone pages; edit directly if needed
+- **`temp/`** — staging area for posts being prepared before moving to `content/posts/`; not gitignored, so never commit its contents unless a post is ready
 - **`static/images/`** — images served at `/images/`; this is where cover images live
 - **`static/icons/`** — SVG icons for the four category nav items
 - **`layouts/partials/`** — overrides of PaperMod partials: `cover.html` and `home_info.html`
@@ -43,7 +45,7 @@ draft: true
 slug: english-slug-here
 tags:
 categories:
-  - Review
+  - Post
 cover:
   image: /images/filename.png
   alt: Description
@@ -51,7 +53,7 @@ cover:
 ---
 ```
 
-Valid `categories` values (single-select, drives the nav menu): `Book`, `Exhibition`, `Review`, `Design`.
+Valid `categories` values (single-select, drives the nav menu): `Book`, `Exhibition`, `Post`, `Design`.
 
 ## Slug rule
 
