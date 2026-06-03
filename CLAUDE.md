@@ -69,6 +69,10 @@ Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `
 - Any other stray `.md` files at the repo root (e.g. date-named files like `2026-04-19.md`) — Obsidian sometimes creates these; never stage or commit them. Posts belong under `content/posts/`.
 - `archetypes/default.md` — do not use this as a post template; it is outdated and lacks `slug`, `categories`, and `cover` fields. Use `content/posts/Template.md` instead.
 
+## Post date and UTC gotcha
+
+CI builds run in UTC. If a post's `date:` is set to a date that is still in the future relative to UTC at build time, Hugo silently excludes it — no error, the post just won't appear. Taiwan is UTC+8, so this happens whenever a post is published after **8 PM Taiwan time**: the local date has already rolled over to the next day, but UTC hasn't. Always use the UTC calendar date in `date:` frontmatter. When in doubt, use yesterday's date.
+
 ## Image path gotcha
 
 The site lives at a subdirectory (`/the-sloth/`). Hugo's `relURL` resolves cover image paths correctly at build time, so always write cover paths as `/images/filename` — not as full URLs and not with `/the-sloth/` prepended.
