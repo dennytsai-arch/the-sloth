@@ -42,6 +42,11 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
+#menu .active {
+    border-bottom: none;
+    font-weight: 700;
+}
+
 #site-header .logo a,
 .logo a {
     font-weight: 700;
