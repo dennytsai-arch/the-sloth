@@ -59,6 +59,21 @@ Valid `categories` values (single-select, drives the nav menu): `Book`, `Exhibit
 
 Hugo derives the URL from the filename. Chinese filenames produce percent-encoded URLs (e.g. `/posts/ai%E4%BA%BA%E6%89%8D.../`) that are ugly and fragile. **Always add a `slug` field whenever the post title contains any Chinese characters.** The slug must be lowercase ASCII with hyphens — a short English translation of the title is ideal (e.g. `slug: from-taste-to-personality`). Never omit the slug for Chinese-titled posts, even for drafts, so it is set before first publish.
 
+## Publishing a new post
+
+When the user says "update and push new post", the workflow is:
+
+1. `git status` — find the new untracked file under `content/posts/`
+2. Read the post — it will have template placeholder values that need filling:
+   - `title:` → use the filename (minus `.md`) as the title
+   - `slug:` → short English translation with hyphens
+   - `date:` → use the UTC-safe date (see UTC gotcha below); if the post date is today in Taiwan, use yesterday to be safe
+   - `cover.image:` → match the `![[filename.jpg]]` wikilink in the body; that image will be untracked in `static/images/`
+   - `cover.alt:` → brief descriptive alt text in Chinese
+3. Remove the `![[filename.jpg]]` line from the body
+4. Stage the post file and its cover image (`git add <post> static/images/<cover>`)
+5. Commit and push
+
 ## Obsidian wikilink images
 
 Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `layouts/_default/single.html` strips these at render time via regex, so they don't appear on the live site — but clean them from the source anyway. Post images belong in the `cover:` frontmatter block, not in the body.
