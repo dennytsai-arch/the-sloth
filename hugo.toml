@@ -48,3 +48,6 @@ paginate = 10
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[permalinks]
+  posts = "/posts/:slug/"
