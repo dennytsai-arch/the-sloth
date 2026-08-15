@@ -27,11 +27,6 @@ paginate = 10
     weight = 2
     pre = '<span class="nav-cat-icon nav-cat-book"></span>'
   [[menu.main]]
-    name = "Exhibition"
-    url = "/categories/exhibition/"
-    weight = 3
-    pre = '<span class="nav-cat-icon nav-cat-exhibition"></span>'
-  [[menu.main]]
     name = "Post"
     url = "/categories/post/"
     weight = 4

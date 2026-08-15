@@ -29,7 +29,7 @@ Deployment is fully automated: pushing to `main` triggers `.github/workflows/hug
 - **`temp/`** — staging area for posts being prepared before moving to `content/posts/`; not gitignored, so never commit its contents unless a post is ready
 - **`static/images/`** — images served at `/images/`; this is where cover images live
 - **`static/images/books/`** — cover images for book-recommendation entries
-- **`static/icons/`** — SVG icons for the four category nav items
+- **`static/icons/`** — SVG icons for the category nav items (Exhibition's icon is unused since it was removed from the nav menu, but the `Exhibition` category and its posts still work)
 - **`layouts/partials/`** — overrides of PaperMod partials: `cover.html` and `home_info.html`; also `recommend-book.html`, the tag-matched book card
 - **`layouts/_default/single.html`** — full single-post layout override (not just a partial); adds category badge above title, strips Obsidian wikilinks from body at render time, and renders the "你也許會喜歡" book card after post content
 - **`layouts/_default/list.html`** — full list/home layout override; adds category badge to post cards
@@ -126,6 +126,7 @@ Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `
 - `archetypes/default.md` — do not use this as a post template; it is outdated and lacks `slug`, `categories`, and `cover` fields. Use `content/posts/Template.md` instead.
 - `*.base` files (e.g. `無題のファイル.base`) — Obsidian internal files; never stage or commit them.
 - `www.youtube.com/` and similar URL-named directories — Obsidian sometimes creates these when saving web clips; never stage or commit them.
+- Stray image files at the repo root (e.g. `kv_pc_02.webp`, a pasted screenshot, or a long auto-named `....jpg.webp`) — leftovers from Obsidian web clips or pastes; never stage or commit them. Post/book cover images belong under `static/images/`.
 
 ## Post subfolder / permalink gotcha
 
