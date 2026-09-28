@@ -4,6 +4,9 @@ date: 2026-05-02
 draft: false
 slug: palantir-technological-republic
 tags:
+  - technology
+  - geopolitics
+  - literature
 cover:
   image: /images/The Technological Republic.png
   alt: The Technological Republic

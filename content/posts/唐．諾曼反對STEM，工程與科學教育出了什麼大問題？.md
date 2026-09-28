@@ -4,6 +4,8 @@ date: 2026-07-08
 draft: false
 slug: don-norman-against-stem
 tags:
+  - education
+  - design-theory
 categories:
   - Post
 cover:

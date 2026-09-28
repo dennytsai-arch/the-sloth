@@ -4,6 +4,10 @@ date: 2026-06-09
 draft: false
 slug: apple-app-store-ecosystem-2025
 tags:
+  - apple
+  - ai
+  - startup
+  - technology
 categories:
   - Post
 cover:

@@ -4,6 +4,9 @@ date: 2026-07-08
 draft: false
 slug: criterion-preserving-film-memory
 tags:
+  - film
+  - design-practice
+  - culture
 categories:
   - Post
 cover:

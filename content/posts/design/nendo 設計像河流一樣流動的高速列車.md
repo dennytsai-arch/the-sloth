@@ -4,6 +4,8 @@ date: 2026-05-02
 draft: false
 slug: nendo-tgv-river-design
 tags:
+  - design-practice
+  - japan
 categories:
   - Design
 cover:

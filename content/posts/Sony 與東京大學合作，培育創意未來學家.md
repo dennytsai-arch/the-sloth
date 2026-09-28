@@ -4,6 +4,9 @@ date: 2026-05-01
 draft: false
 slug: sony-ut-creative-futurist
 tags:
+  - japan
+  - design-practice
+  - education
 cover:
   image: /images/683514898_122107839212737990_6586539255452442020_n.jpg
   alt: Sony 與東京大學合作，培育創意未來學家

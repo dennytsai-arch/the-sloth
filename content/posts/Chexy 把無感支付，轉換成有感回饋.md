@@ -4,6 +4,9 @@ date: 2026-05-15
 draft: false
 slug: chexy-rewards-everyday-payments
 tags:
+  - startup
+  - finance
+  - technology
 categories:
   - Post
 cover:

@@ -4,6 +4,9 @@ date: 2026-07-09
 draft: false
 slug: sakamoto-takatani-async-immersion
 tags:
+  - art
+  - japan
+  - music
 categories:
   - Exhibition
 cover:

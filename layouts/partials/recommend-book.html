@@ -1,0 +1,44 @@
+{{- $postTags := .Params.tags }}
+{{- if $postTags }}
+{{- $booksSection := site.GetPage "section" "books" }}
+{{- if $booksSection }}
+{{- $best := false }}
+{{- $bestScore := 0 }}
+{{- range $booksSection.Pages }}
+  {{- $bookTags := .Params.tags }}
+  {{- if $bookTags }}
+    {{- $score := len (intersect $postTags $bookTags) }}
+    {{- if gt $score $bestScore }}
+      {{- $best = . }}
+      {{- $bestScore = $score }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- with $best }}
+{{- $cover := .Params.cover | strings.TrimLeft "/" | relURL }}
+{{- $link := .Params.link }}
+<div class="recommend-book">
+  <h3 class="recommend-book-heading">你也許會喜歡</h3>
+  {{- if $link }}
+  <a href="{{ $link }}" target="_blank" rel="noopener noreferrer" class="recommend-book-card">
+  {{- else }}
+  <div class="recommend-book-card">
+  {{- end }}
+    <div class="recommend-book-visual" style="background-image:url('{{ $cover }}');">
+      <img src="{{ $cover }}" alt="{{ .Title }}" class="recommend-book-cover" loading="lazy">
+    </div>
+    <div class="recommend-book-info">
+      {{- with .Params.author }}
+      <p class="recommend-book-author">{{ . }}</p>
+      {{- end }}
+      <p class="recommend-book-title">{{ .Title }}</p>
+    </div>
+  {{- if $link }}
+  </a>
+  {{- else }}
+  </div>
+  {{- end }}
+</div>
+{{- end }}
+{{- end }}
+{{- end }}

@@ -4,6 +4,9 @@ date: 2026-05-10
 draft: false
 slug: nendo-my-lid-reusable-lid
 tags:
+  - design-practice
+  - sustainability
+  - japan
 categories:
   - Design
 cover:

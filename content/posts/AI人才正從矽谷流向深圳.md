@@ -4,6 +4,9 @@ date: 2026-04-26
 draft: false
 slug: ai-talent-silicon-valley-to-shenzhen
 tags:
+  - ai
+  - technology
+  - globalization
 cover:
   image: /images/shenzen.jpg
   alt: 深圳城市景觀

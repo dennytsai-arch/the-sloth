@@ -4,6 +4,10 @@ date: 2026-05-20
 draft: false
 slug: apple-intelligence-inclusive-design
 tags:
+  - apple
+  - ai
+  - accessibility
+  - design-practice
 categories:
   - Post
 cover:

@@ -534,6 +534,93 @@ a:hover {
     font-size: 0.88em;
 }
 
+/* ── Recommend book card ── */
+.recommend-book {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.recommend-book-heading {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--secondary);
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.recommend-book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.recommend-book-card:hover .recommend-book-title {
+    color: var(--accent);
+}
+
+.recommend-book-visual {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 14px;
+    background-color: var(--tertiary);
+    background-size: cover;
+    background-position: center;
+}
+
+.recommend-book-visual::before {
+    content: '';
+    position: absolute;
+    inset: -25%;
+    z-index: 0;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: blur(45px) saturate(1.5) brightness(1.05);
+    transform: scale(1.15);
+}
+
+[data-theme="dark"] .recommend-book-visual::before {
+    filter: blur(45px) saturate(1.3) brightness(0.7);
+}
+
+.recommend-book-cover {
+    position: relative;
+    z-index: 1;
+    max-width: 58%;
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.25), 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.recommend-book-info {
+    margin-top: 1.1rem;
+}
+
+.recommend-book-author {
+    font-size: 0.8rem;
+    color: var(--secondary);
+    margin: 0 0 0.3rem;
+}
+
+.recommend-book-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    transition: color 0.15s ease;
+}
+
 /* ── Post footer (tags + nav) ── */
 .post-footer {
     margin-top: 2.5rem;

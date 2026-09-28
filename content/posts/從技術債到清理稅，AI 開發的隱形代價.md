@@ -4,6 +4,9 @@ date: 2026-06-27
 draft: false
 slug: ai-development-cleanup-tax
 tags:
+  - ai
+  - technology
+  - future-of-work
 categories:
   - Post
 cover:

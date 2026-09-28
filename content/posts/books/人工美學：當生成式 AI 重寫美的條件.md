@@ -4,6 +4,9 @@ date: 2026-06-17
 draft: false
 slug: artificial-aesthetics-generative-ai
 tags:
+  - ai
+  - art
+  - design-theory
 categories:
   - Book
 cover:

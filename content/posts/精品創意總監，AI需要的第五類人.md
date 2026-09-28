@@ -4,6 +4,9 @@ date: 2026-07-18
 draft: false
 slug: creative-director-fifth-type-ai
 tags:
+  - ai
+  - brand
+  - design-practice
 categories:
   - Post
 cover:

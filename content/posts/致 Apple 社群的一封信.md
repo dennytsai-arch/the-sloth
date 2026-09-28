@@ -4,6 +4,8 @@ date: 2026-04-21
 draft: false
 slug: letter-to-apple-community
 tags:
+  - apple
+  - culture
 categories:
   - Post
 cover:

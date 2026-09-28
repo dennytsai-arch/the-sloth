@@ -4,6 +4,9 @@ date: 2026-05-02
 draft: false
 slug: ipod-comeback-young-listeners
 tags:
+  - technology
+  - music
+  - wellness
 categories:
   - Post
 cover:
