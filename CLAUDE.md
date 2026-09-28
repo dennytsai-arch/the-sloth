@@ -9,6 +9,9 @@ A Hugo static blog called "The Sloth" (緩慢前進的懶惰書店), deployed to
 ## Commands
 
 ```bash
+# First-time clone: PaperMod is a git submodule and won't be present otherwise
+git submodule update --init --recursive
+
 # Local dev server (includes draft posts)
 hugo server -D
 
@@ -19,7 +22,9 @@ hugo --minify
 hugo --minify --baseURL "https://dennytsai-arch.github.io/the-sloth/"
 ```
 
-Deployment is fully automated: pushing to `main` triggers `.github/workflows/hugo.yml`, which builds and deploys to GitHub Pages. The `public/` directory is gitignored — never commit it.
+Deployment is fully automated: pushing to `main` triggers `.github/workflows/hugo.yml`, which builds and deploys to GitHub Pages. The `public/` directory is gitignored — never commit it. CI installs Hugo extended at `hugo-version: "latest"`, so it can be ahead of the local Homebrew Hugo; if CI fails but a local build passes, check for a Hugo version difference first.
+
+`git add -A` / `git add .` is never safe here — the working tree routinely holds Obsidian leftovers (see "Files to never commit"). Always stage specific paths.
 
 ## Project structure
 
@@ -55,7 +60,7 @@ cover:
 ---
 ```
 
-Valid `categories` values (single-select, drives the nav menu): `Book`, `Exhibition`, `Post`, `Design`.
+Valid `categories` values (single-select): `Book`, `Exhibition`, `Post`, `Design`. `Book`, `Post`, and `Design` each have a nav menu entry in `hugo.toml`; `Exhibition` does not (removed from the nav, but the category and its subfolder/posts still work — see `static/icons/` note above).
 
 ## Slug rule
 
@@ -121,7 +126,7 @@ Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `
 
 ## Files to never commit
 
-- `無題のファイル.md` — Obsidian's auto-created untitled scratch file, always lives at the repo root untracked. It is **not** gitignored; never stage or commit it.
+- `無題のファイル.md` (and numbered variants like `無題のファイル 1.md`, `無題のファイル 2.md`) — Obsidian's auto-created untitled scratch files, always at the repo root untracked. They are **not** gitignored; never stage or commit them.
 - Any other stray `.md` files at the repo root (e.g. date-named files like `2026-04-19.md`) — Obsidian sometimes creates these; never stage or commit them. Posts belong under `content/posts/`.
 - `archetypes/default.md` — do not use this as a post template; it is outdated and lacks `slug`, `categories`, and `cover` fields. Use `content/posts/Template.md` instead.
 - `*.base` files (e.g. `無題のファイル.base`) — Obsidian internal files; never stage or commit them.
