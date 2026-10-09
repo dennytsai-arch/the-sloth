@@ -22,6 +22,8 @@ hugo --minify
 hugo --minify --baseURL "https://dennytsai-arch.github.io/the-sloth/"
 ```
 
+There are no tests or linters. A clean `hugo --minify` (no errors or warnings) is the only verification step — run it before every push, especially after changing tags, categories, or layouts.
+
 Deployment is fully automated: pushing to `main` triggers `.github/workflows/hugo.yml`, which builds and deploys to GitHub Pages. The `public/` directory is gitignored — never commit it. CI installs Hugo extended at `hugo-version: "latest"`, so it can be ahead of the local Homebrew Hugo; if CI fails but a local build passes, check for a Hugo version difference first.
 
 `git add -A` / `git add .` is never safe here — the working tree routinely holds Obsidian leftovers (see "Files to never commit"). Always stage specific paths.
@@ -132,6 +134,7 @@ Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `
 - `*.base` files (e.g. `無題のファイル.base`) — Obsidian internal files; never stage or commit them.
 - `www.youtube.com/` and similar URL-named directories — Obsidian sometimes creates these when saving web clips; never stage or commit them.
 - Stray image files at the repo root (e.g. `kv_pc_02.webp`, a pasted screenshot, or a long auto-named `....jpg.webp`) — leftovers from Obsidian web clips or pastes; never stage or commit them. Post/book cover images belong under `static/images/`.
+- Unreferenced media inside `static/images/` — Obsidian also drops pasted files there, including duplicates with a ` 1` suffix (e.g. `HKGKywIbAAA7cig 1.jpeg`) and videos (`.mp4`). When publishing, stage only the image the post's `cover.image` actually points to, never everything untracked in `static/images/`.
 
 ## Post subfolder / permalink gotcha
 
