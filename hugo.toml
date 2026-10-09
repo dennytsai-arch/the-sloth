@@ -1,12 +1,14 @@
 baseURL = "https://dennytsai-arch.github.io/the-sloth/"
-languageCode = "en-us"
+languageCode = "zh-tw"
+hasCJKLanguage = true
+defaultContentLanguage = "zh-tw"
 title = "The Sloth"
 theme = "PaperMod"
 paginate = 10
 
 [params]
   hideAuthor = true
-  description = "Personal blog and notes"
+  description = "緩慢前進的懶惰書店：關於設計、書籍、科技與文化的閱讀筆記"
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = false

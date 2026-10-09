@@ -52,6 +52,7 @@ title: Title
 date: 2026-04-19
 draft: true
 slug: english-slug-here
+description:
 tags:
 categories:
   - Post
@@ -79,6 +80,7 @@ When the user says "update and push new post", the workflow is:
    - `date:` → use the UTC-safe date (see UTC gotcha below); if the post date is today in Taiwan, use yesterday to be safe
    - `cover.image:` → match the `![[filename.jpg]]` wikilink in the body; that image will be untracked in `static/images/`
    - `cover.alt:` → brief descriptive alt text in Chinese
+   - `description:` → one or two Chinese sentences (~80–120 characters) summarising the post. This becomes the meta description / search-result snippet; without it Hugo falls back to the first paragraph, which reads poorly in Google.
 3. Remove the `![[filename.jpg]]` line from the body
 4. `tags:` → read the post and assign 2–4 semantic tags based on its actual content. Reuse existing tags from the vocabulary below whenever one fits; only introduce a new tag when nothing in the list covers the topic. Never use a tag that matches an existing category name (`book`, `exhibition`, `post`, `design`) — Hugo's nav menu does `site.GetPage` on those exact names, and a same-named tag term makes it ambiguous and breaks the build (this happened once — see "Tag vocabulary" below).
 5. Move the file into the subfolder matching its `categories:` value if it's not already there — `content/posts/books/`, `content/posts/design/`, or `content/posts/exhibitions/` (create the subfolder if it doesn't exist yet). Posts with category `Post` stay at the `content/posts/` root. Moving between subfolders never changes the live URL — see "Post subfolder / permalink gotcha" below.
@@ -143,6 +145,10 @@ Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `
 ## Post date and UTC gotcha
 
 CI builds run in UTC. If a post's `date:` is set to a date that is still in the future relative to UTC at build time, Hugo silently excludes it — no error, the post just won't appear. Taiwan is UTC+8, so this happens whenever a post is published after **8 PM Taiwan time**: the local date has already rolled over to the next day, but UTC hasn't. Always use the UTC calendar date in `date:` frontmatter. When in doubt, use yesterday's date.
+
+## Language / SEO settings
+
+`hugo.toml` sets `languageCode = "zh-tw"`, `defaultContentLanguage = "zh-tw"`, and `hasCJKLanguage = true`. PaperMod reads the page language (`<html lang>`, `hreflang`, JSON-LD `inLanguage`) from `defaultContentLanguage`, not `languageCode`, so both must stay `zh-tw` — otherwise every page tells search engines it's English. `hasCJKLanguage` makes word counts, reading time and auto-summaries correct for Chinese text. With a single language, `defaultContentLanguage` adds no URL prefix; it also switches PaperMod's UI strings (pagination, reading time) to `themes/PaperMod/i18n/zh-tw.yaml`.
 
 ## Image path gotcha
 
