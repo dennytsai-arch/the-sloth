@@ -363,6 +363,11 @@ a:hover {
     display: block;
 }
 
+/* ── Post lists (home, category, tag) match the header nav width ── */
+.list .main:has(.posts-list) {
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+}
+
 /* ── List layout: borderless thumbnail rows ── */
 .post-entry {
     display: grid;
