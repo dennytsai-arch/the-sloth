@@ -1,24 +1,48 @@
-{{- /* Home page belt of Book-category posts: the set is rendered twice so the CSS loop is seamless */ -}}
+{{- /* Home page carousel of Book-category posts, scrolled with arrow buttons */ -}}
 {{- $books := where site.RegularPages "Params.categories" "intersect" (slice "Book") }}
 {{- with first 12 $books }}
-{{- $books = . }}
 <section class="books-section" aria-label="Books">
-  <h2 class="section-title"><a href="{{ "categories/book/" | relURL }}">BOOKS</a></h2>
-  <div class="books-belt">
-    <div class="books-track" style="--belt-duration: {{ mul (len $books) 7 }}s">
-      {{- range $copy := slice false true }}
-      {{- range $books }}
-      <article class="book-card"{{ if $copy }} aria-hidden="true"{{ end }}>
-        {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
-        <h3 class="book-card-title">{{ .Title }}</h3>
-        <footer class="entry-footer">
-          {{- partial "post_meta.html" . -}}
-        </footer>
-        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"{{ if $copy }} tabindex="-1"{{ end }}></a>
-      </article>
-      {{- end }}
-      {{- end }}
+  <div class="section-head">
+    <h2 class="section-title"><a href="{{ "categories/book/" | relURL }}">BOOKS</a></h2>
+    <div class="carousel-nav">
+      <button type="button" class="carousel-btn" data-dir="-1" aria-label="Previous">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <button type="button" class="carousel-btn" data-dir="1" aria-label="Next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
     </div>
   </div>
+  <div class="books-track">
+    {{- range . }}
+    <article class="book-card">
+      {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
+      <h3 class="book-card-title">{{ .Title }}</h3>
+      <footer class="entry-footer">
+        {{- partial "post_meta.html" . -}}
+      </footer>
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
+    {{- end }}
+  </div>
 </section>
+<script>
+  (function () {
+    var section = document.currentScript.previousElementSibling;
+    var track = section.querySelector('.books-track');
+    var buttons = section.querySelectorAll('.carousel-btn');
+    function update() {
+      buttons[0].disabled = track.scrollLeft <= 1;
+      buttons[1].disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+    }
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        track.scrollBy({ left: Number(btn.dataset.dir) * track.clientWidth * 0.8, behavior: 'smooth' });
+      });
+    });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
 {{- end }}

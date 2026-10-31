@@ -498,39 +498,85 @@ a:hover {
     color: var(--accent);
 }
 
-/* ── Books belt (home page 1): auto-scrolling loop, pauses on hover ── */
-.books-section {
-    margin-bottom: 4rem;
-}
-
-.books-belt {
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-}
-
-/* The track holds the books twice; sliding it by -50% loops seamlessly */
-.books-track {
+/* ── BOOKS heading: small, left-aligned, rule running to the arrows ── */
+.section-head .section-title {
     display: flex;
-    width: max-content;
-    animation: books-belt var(--belt-duration, 40s) linear infinite;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    margin-bottom: 0;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: inherit;
 }
 
-.books-belt:hover .books-track,
-.books-belt:focus-within .books-track {
-    animation-play-state: paused;
+.section-head .section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
 }
 
-@keyframes books-belt {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+/* ── Books carousel (home page 1) ── */
+.books-section {
+    margin-bottom: 3.5rem;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.carousel-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.carousel-btn:hover:not(:disabled) {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.books-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 3 * 1.25rem) / 4);
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.books-track::-webkit-scrollbar {
+    display: none;
 }
 
 .book-card {
     position: relative;
-    flex: 0 0 auto;
-    width: 230px;
-    margin-right: 1.25rem;
+    scroll-snap-align: start;
 }
 
 .book-card .entry-cover {
@@ -573,20 +619,9 @@ a:hover {
     color: var(--secondary);
 }
 
-/* Without motion: a plain swipeable row, no duplicate set */
-@media (prefers-reduced-motion: reduce) {
-    .books-belt {
-        overflow-x: auto;
-        -webkit-mask-image: none;
-        mask-image: none;
-    }
-
+@media (max-width: 768px) {
     .books-track {
-        animation: none;
-    }
-
-    .book-card[aria-hidden="true"] {
-        display: none;
+        grid-auto-columns: 62%;
     }
 }
 
@@ -594,11 +629,6 @@ a:hover {
     .section-title {
         font-size: 2.4rem;
         margin-bottom: 1.5rem;
-    }
-
-    .book-card {
-        width: 170px;
-        margin-right: 1rem;
     }
 }
 
