@@ -497,6 +497,126 @@ a:hover {
     background: var(--border);
 }
 
+.section-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.section-title a:hover {
+    color: var(--accent);
+}
+
+/* ── Books carousel (home page 1) ── */
+.books-section {
+    margin-bottom: 3.5rem;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-head .section-title {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.carousel-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.carousel-btn:hover:not(:disabled) {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.books-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 3 * 1.25rem) / 4);
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.books-track::-webkit-scrollbar {
+    display: none;
+}
+
+.book-card {
+    position: relative;
+    scroll-snap-align: start;
+}
+
+.book-card .entry-cover {
+    aspect-ratio: 1 / 1;
+    margin: 0 0 0.8rem;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.book-card .entry-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover .entry-cover img {
+    transform: scale(1.04);
+}
+
+.book-card-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 0.3rem;
+    color: var(--primary);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-card:hover .book-card-title {
+    color: var(--accent);
+}
+
+.book-card .entry-footer {
+    font-size: 0.8rem;
+    color: var(--secondary);
+}
+
+@media (max-width: 768px) {
+    .books-track {
+        grid-auto-columns: 62%;
+    }
+}
+
 /* ── List layout: borderless thumbnail rows ── */
 .post-entry {
     display: grid;

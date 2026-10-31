@@ -57,6 +57,7 @@
 {{- if and .IsHome (eq $paginator.PageNumber 1) }}
 {{- $featuredCount = 4 }}
 {{- partial "featured-posts.html" (first $featuredCount $paginator.Pages) }}
+{{- partial "books-carousel.html" . }}
 {{- end }}
 
 {{- $term := .Data.Term }}
