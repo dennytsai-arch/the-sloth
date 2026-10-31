@@ -1,0 +1,30 @@
+{{- /* Home page lead section: newest post large, the next ones as a side column. Expects a slice of pages. */ -}}
+{{- with . }}
+{{- $hasSide := gt (len .) 1 }}
+<section class="featured" aria-label="Featured posts">
+  {{- range $index, $page := . }}
+  <article class="featured-item {{ if eq $index 0 }}featured-lead{{ else }}featured-side{{ end }}">
+    {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+    {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+    <div class="featured-body">
+      {{- with (.GetTerms "categories") }}
+      <div class="entry-category">
+        {{- range . }}<a href="{{ .Permalink }}" class="post-category post-category-{{ .LinkTitle | lower }}">{{ .LinkTitle }}</a>{{- end }}
+      </div>
+      {{- end }}
+      <h2 class="featured-title">{{ .Title }}</h2>
+      <footer class="entry-footer">
+        {{- partial "post_meta.html" . -}}
+      </footer>
+    </div>
+    <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+  </article>
+  {{- if and (eq $index 0) $hasSide }}
+  <div class="featured-side-list">
+  {{- end }}
+  {{- end }}
+  {{- if $hasSide }}
+  </div>
+  {{- end }}
+</section>
+{{- end }}

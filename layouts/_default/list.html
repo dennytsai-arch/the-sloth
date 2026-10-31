@@ -52,9 +52,16 @@
 {{- partial "home_info.html" . }}
 {{- end }}
 
+{{- /* Home page 1 opens with the newest posts as a featured block; the list skips them */ -}}
+{{- $featuredCount := 0 }}
+{{- if and .IsHome (eq $paginator.PageNumber 1) }}
+{{- $featuredCount = 4 }}
+{{- partial "featured-posts.html" (first $featuredCount $paginator.Pages) }}
+{{- end }}
+
 {{- $term := .Data.Term }}
 <div class="posts-list">
-{{- range $index, $page := $paginator.Pages }}
+{{- range $index, $page := after $featuredCount $paginator.Pages }}
 
 {{- $class := "post-entry" }}
 
