@@ -739,10 +739,6 @@ a:hover {
 
 /* ── Post page layout ── */
 .post-single {
-    background: var(--entry);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2.5rem 3rem;
     margin-top: 1.5rem;
 }
 
@@ -918,23 +914,55 @@ a:hover {
     border-top: 1px solid var(--border);
 }
 
-/* ── Prev/Next nav ── */
+/* ── Prev/Next nav: image cards ── */
 .paginav {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    background: none;
+    border: none;
+    border-radius: 0;
 }
 
-.paginav a {
+.paginav .paginav-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: auto;
+    padding: 0;
+    line-height: 1.5;
     color: var(--primary);
-    transition: background 0.15s ease, color 0.15s ease;
+    text-decoration: none;
 }
 
-.paginav a:hover {
-    background: color-mix(in srgb, var(--accent) 8%, var(--entry));
+.paginav .paginav-card.next {
+    grid-column: 2;
+    text-align: right;
+}
+
+.paginav .paginav-card:hover {
+    background: none;
     color: var(--accent);
-    text-decoration: none;
+}
+
+.paginav .entry-cover {
+    aspect-ratio: 16 / 10;
+    margin: 0 0 0.5rem;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.paginav .entry-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.paginav .paginav-card:hover .entry-cover img {
+    transform: scale(1.04);
 }
 
 .paginav-title {
@@ -943,4 +971,15 @@ a:hover {
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+}
+
+.paginav span:hover:not(.title) {
+    box-shadow: none;
+}
+
+.paginav-name {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
 }

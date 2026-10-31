@@ -1,0 +1,20 @@
+{{- /* Override of PaperMod's prev/next links: image cards for the neighbouring posts */ -}}
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- if and (gt (len $pages) 1) (in $pages . ) }}
+<nav class="paginav">
+  {{- with $pages.Next . }}
+  <a class="paginav-card prev" href="{{ .Permalink }}">
+    {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
+    <span class="paginav-title">« {{ i18n "prev_page" }}</span>
+    <span class="paginav-name">{{ .Title }}</span>
+  </a>
+  {{- end }}
+  {{- with $pages.Prev . }}
+  <a class="paginav-card next" href="{{ .Permalink }}">
+    {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
+    <span class="paginav-title">{{ i18n "next_page" }} »</span>
+    <span class="paginav-name">{{ .Title }}</span>
+  </a>
+  {{- end }}
+</nav>
+{{- end }}
