@@ -478,6 +478,25 @@ a:hover {
     }
 }
 
+/* ── Home section heading above the post list ── */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--primary);
+}
+
+.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
 /* ── List layout: borderless thumbnail rows ── */
 .post-entry {
     display: grid;

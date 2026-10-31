@@ -60,6 +60,9 @@
 {{- end }}
 
 {{- $term := .Data.Term }}
+{{- if .IsHome }}
+<h2 class="section-title">WHAT'S NEW</h2>
+{{- end }}
 <div class="posts-list">
 {{- range $index, $page := after $featuredCount $paginator.Pages }}
 
