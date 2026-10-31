@@ -24,25 +24,25 @@ hugo --minify --baseURL "https://dennytsai-arch.github.io/the-sloth/"
 
 There are no tests or linters. A clean `hugo --minify` (no errors or warnings) is the only verification step — run it before every push, especially after changing tags, categories, or layouts.
 
-Deployment is fully automated: pushing to `main` triggers `.github/workflows/hugo.yml`, which builds and deploys to GitHub Pages. The `public/` directory is gitignored — never commit it. CI installs Hugo extended at `hugo-version: "latest"`, so it can be ahead of the local Homebrew Hugo; if CI fails but a local build passes, check for a Hugo version difference first.
+Deployment is fully automated: pushing to `main` triggers `.github/workflows/hugo.yml`, which builds and deploys to GitHub Pages (CI passes `--baseURL` from `actions/configure-pages`, overriding `hugo.toml`'s `baseURL`). The `public/` directory is gitignored — never commit it. CI installs Hugo extended at `hugo-version: "latest"`, so it can be ahead of the local Homebrew Hugo; if CI fails but a local build passes, check for a Hugo version difference first.
 
 `git add -A` / `git add .` is never safe here — the working tree routinely holds Obsidian leftovers (see "Files to never commit"). Always stage specific paths.
 
 ## Project structure
 
 - **`content/posts/`** — blog posts as Markdown files (Chinese filenames are fine); `Template.md` is the drafting template (`draft: true`), never published. Organized into subfolders by category: `content/posts/books/` (category `Book`), `content/posts/design/` (category `Design`), `content/posts/exhibitions/` (category `Exhibition`). Posts with category `Post` (the generic default) stay directly at the `content/posts/` root — no `post/` subfolder, since that would be redundant with the section name itself. When creating or moving a post, put it in the subfolder matching its `categories:` value (create the subfolder if it doesn't exist yet).
-- **`content/books/`** — headless book-recommendation entries (see "Recommend book card" below); `Template.md` is the drafting template
+- **`content/books/`** — headless book-recommendation entries (see "Recommend book card" below); `Template.md` is the drafting template; `_index.md` sets `build.render: never` / `list: never` so the section itself has no public page
 - **`content/about.md`** / **`content/archives.md`** — standalone pages; edit directly if needed
 - **`temp/`** — staging area for posts being prepared before moving to `content/posts/`; not gitignored, so never commit its contents unless a post is ready
 - **`static/images/`** — images served at `/images/`; this is where cover images live
 - **`static/images/books/`** — cover images for book-recommendation entries
-- **`static/icons/`** — SVG icons for the category nav items (Exhibition's icon is unused since it was removed from the nav menu, but the `Exhibition` category and its posts still work)
+- **`static/icons/`** — SVG icons for the category nav items (Exhibition's icon is unused since it was removed from the nav menu, but the `Exhibition` category and its posts still work; `review.svg` is an unused leftover with no matching category)
 - **`layouts/partials/`** — overrides of PaperMod partials: `cover.html` and `home_info.html`; also `recommend-book.html`, the tag-matched book card
 - **`layouts/_default/single.html`** — full single-post layout override (not just a partial); adds category badge above title, strips Obsidian wikilinks from body at render time, and renders the "你也許會喜歡" book card after post content
 - **`layouts/_default/list.html`** — full list/home layout override; adds category badge to post cards
 - **`assets/css/extended/custom.css`** — all custom styling; PaperMod auto-merges this
 - **`themes/PaperMod/`** — git submodule; do not edit directly
-- **`design.md`** — Obsidian design note at the repo root; Hugo ignores it (not inside `content/`)
+- **`design.md`** — Obsidian design note at the repo root; Hugo ignores it (not inside `content/`) and it is gitignored
 
 ## Post frontmatter template
 
@@ -78,7 +78,7 @@ When the user says "update and push new post", the workflow is:
    - `title:` → use the filename (minus `.md`) as the title
    - `slug:` → short English translation with hyphens
    - `date:` → use the UTC-safe date (see UTC gotcha below); if the post date is today in Taiwan, use yesterday to be safe
-   - `cover.image:` → match the `![[filename.jpg]]` wikilink in the body; that image will be untracked in `static/images/`
+   - `cover.image:` → match the `![[filename.jpg]]` wikilink in the body; that image will be untracked in `static/images/` (Obsidian sometimes drops it at the repo root instead — if so, `mv` it into `static/images/` first)
    - `cover.alt:` → brief descriptive alt text in Chinese
    - `description:` → one or two Chinese sentences (~80–120 characters) summarising the post. This becomes the meta description / search-result snippet; without it Hugo falls back to the first paragraph, which reads poorly in Google.
 3. Remove the `![[filename.jpg]]` line from the body

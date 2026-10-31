@@ -5,7 +5,7 @@ draft: true
 slug: english-slug-here
 tags:
 categories:
-  - Review
+  - Post
 cover:
   image: /images/filename.png
   alt: Description
