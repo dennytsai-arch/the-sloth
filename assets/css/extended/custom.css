@@ -929,7 +929,8 @@ a:hover {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    width: auto;
+    width: 100%;
+    margin: 0;
     padding: 0;
     line-height: 1.5;
     color: var(--primary);
@@ -947,6 +948,7 @@ a:hover {
 }
 
 .paginav .entry-cover {
+    width: 100%;
     aspect-ratio: 16 / 10;
     margin: 0 0 0.5rem;
     overflow: hidden;
