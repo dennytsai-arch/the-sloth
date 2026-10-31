@@ -31,14 +31,14 @@ Deployment is fully automated: pushing to `main` triggers `.github/workflows/hug
 ## Project structure
 
 - **`content/posts/`** — blog posts as Markdown files (Chinese filenames are fine); `Template.md` is the drafting template (`draft: true`), never published. Organized into subfolders by category: `content/posts/books/` (category `Book`), `content/posts/design/` (category `Design`), `content/posts/exhibitions/` (category `Exhibition`). Posts with category `Post` (the generic default) stay directly at the `content/posts/` root — no `post/` subfolder, since that would be redundant with the section name itself. When creating or moving a post, put it in the subfolder matching its `categories:` value (create the subfolder if it doesn't exist yet).
-- **`content/books/`** — headless book-recommendation entries (see "Recommend book card" below); `Template.md` is the drafting template; `_index.md` sets `build.render: never` / `list: never` so the section itself has no public page
+- **`content/books/`** — headless book entries, currently unused (the post-page BOOKS section matches Book-category posts instead — see "BOOKS section on posts" below); `Template.md` is the drafting template; `_index.md` sets `build.render: never` / `list: never` so the section itself has no public page
 - **`content/about.md`** / **`content/archives.md`** — standalone pages; edit directly if needed
 - **`temp/`** — staging area for posts being prepared before moving to `content/posts/`; not gitignored, so never commit its contents unless a post is ready
 - **`static/images/`** — images served at `/images/`; this is where cover images live
 - **`static/images/books/`** — cover images for book-recommendation entries
 - **`static/icons/`** — SVG icons for the category nav items (Exhibition's icon is unused since it was removed from the nav menu, but the `Exhibition` category and its posts still work; `review.svg` is an unused leftover with no matching category)
-- **`layouts/partials/`** — overrides of PaperMod partials: `cover.html` and `home_info.html`; also `recommend-book.html`, the tag-matched book card
-- **`layouts/_default/single.html`** — full single-post layout override (not just a partial); adds category badge above title, strips Obsidian wikilinks from body at render time, and renders the "你也許會喜歡" book card after post content
+- **`layouts/partials/`** — overrides of PaperMod partials: `cover.html` and `home_info.html`; also `recommend-book.html` (post-page BOOKS section), `featured-posts.html` + `books-carousel.html` (home page sections), and `post_nav_links.html` (prev/next image cards)
+- **`layouts/_default/single.html`** — full single-post layout override (not just a partial); adds category badge above title, strips Obsidian wikilinks from body at render time, and renders the tag-matched BOOKS section after the tags
 - **`layouts/_default/list.html`** — full list/home layout override; adds category badge to post cards
 - **`assets/css/extended/custom.css`** — all custom styling; PaperMod auto-merges this
 - **`themes/PaperMod/`** — git submodule; do not edit directly
@@ -89,7 +89,7 @@ When the user says "update and push new post", the workflow is:
 
 ## Tag vocabulary
 
-Tags drive the "你也許會喜歡" book recommendation card (see below), so consistency matters more than precision — reuse an existing tag rather than coining a near-synonym. Current vocabulary, grouped loosely by theme:
+Tags drive the post-page BOOKS recommendation (see below), so consistency matters more than precision — reuse an existing tag rather than coining a near-synonym. Current vocabulary, grouped loosely by theme:
 
 - **Tech/AI**: `ai`, `technology`, `apple`, `startup`, `accessibility`
 - **Design**: `design-practice` (applied/product design — *not* `design`, which collides with the `Design` category), `design-theory`
@@ -100,29 +100,14 @@ Tags drive the "你也許會喜歡" book recommendation card (see below), so con
 
 When a post doesn't fit anything above, add a new lowercase-hyphenated English tag — but first double-check it doesn't equal `book`, `exhibition`, `post`, or `design` (the four category names), and add the new tag to this list.
 
-## Recommend book card
+## BOOKS section on posts
 
-Every post page shows a "你也許會喜歡" (you might also like) card after the post content, recommending one book by matching `tags`. This is driven by `layouts/partials/recommend-book.html`.
+Every post page shows a "BOOKS" section (after the tags, before the prev/next cards) recommending one **Book-category post** whose `tags` overlap the current post's. Driven by `layouts/partials/recommend-book.html`, called from `layouts/_default/single.html`.
 
-- **Book entries** live in `content/books/`, one file per book, using `content/books/Template.md`:
-  ```yaml
-  ---
-  title: 書名
-  author: 作者名
-  cover: /images/books/filename.jpg
-  tags:
-    - tag-one
-  link:
-  build:
-    render: never
-    list: local
-  ---
-  ```
-  `build.render: never` / `list: local` keep books headless — no public `/books/...` page, and they're excluded from tag archive pages, the sitemap, and RSS. `link` is optional (e.g. a purchase/info URL); if omitted the card renders without a hyperlink.
-- **Matching logic**: for the current post, `recommend-book.html` compares its `tags` against every book's `tags` and picks the single book with the most overlapping tags (ties go to whichever is encountered first). If a post has no tags, or no book shares a tag, the card is omitted entirely — nothing renders.
-- **Important**: all posts have tags now (see "Tag vocabulary" above), but `content/books/` has no real entries yet — the card won't render anywhere until at least one book is added with tags that overlap a post's tags.
-- **Cover art**: place book cover images under `static/images/books/`, referenced as a flat `cover:` string (not the nested `cover.image` object posts use).
-- Styling: `.recommend-book*` rules in `assets/css/extended/custom.css`. The card visual is a real book cover centered over a blurred, saturated copy of itself as the backdrop (pure CSS, via `background-image: inherit` on a `::before` pseudo-element — no separate blurred asset needed).
+- **Matching logic**: compares the post's `tags` against every Book-category post's `tags` (excluding the post itself) and picks the one with the most overlap; ties go to the newest. If the post has no tags, or no Book post shares a tag, the section is omitted entirely — nothing renders.
+- So a new Book post only gets recommended if its tags overlap other posts' tags — another reason to reuse tags from the vocabulary above.
+- The card shows the Book post's cover, title, `description` (if set) and date. Styling: `.recommend-book*` rules in `assets/css/extended/custom.css`.
+- `content/books/` (headless book entries) is **no longer used** by this section; it's a leftover from the previous "你也許會喜歡" card.
 
 ## Obsidian wikilink images
 
