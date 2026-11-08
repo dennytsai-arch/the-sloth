@@ -26,7 +26,7 @@ There are no tests or linters. A clean `hugo --minify` (no errors or warnings) i
 
 Deployment is fully automated: pushing to `main` triggers `.github/workflows/hugo.yml`, which builds and deploys to GitHub Pages (CI passes `--baseURL` from `actions/configure-pages`, overriding `hugo.toml`'s `baseURL`). The `public/` directory is gitignored — never commit it. CI installs Hugo extended at `hugo-version: "latest"`, so it can be ahead of the local Homebrew Hugo; if CI fails but a local build passes, check for a Hugo version difference first.
 
-`git add -A` / `git add .` is never safe here — the working tree routinely holds Obsidian leftovers (see "Files to never commit"). Always stage specific paths.
+`git add -A` / `git add .` is never safe here — the working tree routinely holds Obsidian leftovers (see "Files to never commit"). Always stage specific paths. Plain `git status` shows Chinese filenames as octal escapes; use `git -c core.quotepath=false status` to get paths you can read and copy.
 
 ## Project structure
 
@@ -67,7 +67,7 @@ Valid `categories` values (single-select): `Book`, `Exhibition`, `Post`, `Design
 
 ## Slug rule
 
-Hugo derives the URL from the filename. Chinese filenames produce percent-encoded URLs (e.g. `/posts/ai%E4%BA%BA%E6%89%8D.../`) that are ugly and fragile. **Always add a `slug` field whenever the post title contains any Chinese characters.** The slug must be lowercase ASCII with hyphens — a short English translation of the title is ideal (e.g. `slug: from-taste-to-personality`). Never omit the slug for Chinese-titled posts, even for drafts, so it is set before first publish.
+URLs come from `/posts/:slug/` (see "Post subfolder / permalink gotcha"), and a post with no `slug` falls back to its title, not its filename. Chinese titles produce percent-encoded URLs (e.g. `/posts/ai%E4%BA%BA%E6%89%8D.../`) that are ugly and fragile. **Always add a `slug` field whenever the post title contains any Chinese characters.** The slug must be lowercase ASCII with hyphens — a short English translation of the title is ideal (e.g. `slug: from-taste-to-personality`). Never omit the slug for Chinese-titled posts, even for drafts, so it is set before first publish.
 
 ## Publishing a new post
 
@@ -76,8 +76,8 @@ When the user says "update and push new post", the workflow is:
 1. `git status` — find the new untracked file under `content/posts/`
 2. Read the post — it will have template placeholder values that need filling:
    - `title:` → use the filename (minus `.md`) as the title
-   - `slug:` → short English translation with hyphens
-   - `date:` → use the UTC-safe date (see UTC gotcha below); if the post date is today in Taiwan, use yesterday to be safe
+   - `slug:` → short English translation with hyphens (the template's placeholder is `english-slug-here` — it never errors, so check it's been replaced)
+   - `date:` → use the UTC date, `date -u +%F` (see UTC gotcha below)
    - `cover.image:` → match the `![[filename.jpg]]` wikilink in the body; that image will be untracked in `static/images/` (Obsidian sometimes drops it at the repo root instead — if so, `mv` it into `static/images/` first)
    - `cover.alt:` → brief descriptive alt text in Chinese
    - `description:` → one or two Chinese sentences (~80–120 characters) summarising the post. This becomes the meta description / search-result snippet; without it Hugo falls back to the first paragraph, which reads poorly in Google.
@@ -85,7 +85,7 @@ When the user says "update and push new post", the workflow is:
 4. `tags:` → read the post and assign 2–4 semantic tags based on its actual content. Reuse existing tags from the vocabulary below whenever one fits; only introduce a new tag when nothing in the list covers the topic. Never use a tag that matches an existing category name (`book`, `exhibition`, `post`, `design`) — Hugo's nav menu does `site.GetPage` on those exact names, and a same-named tag term makes it ambiguous and breaks the build (this happened once — see "Tag vocabulary" below).
 5. Move the file into the subfolder matching its `categories:` value if it's not already there — `content/posts/books/`, `content/posts/design/`, or `content/posts/exhibitions/` (create the subfolder if it doesn't exist yet). Posts with category `Post` stay at the `content/posts/` root. Moving between subfolders never changes the live URL — see "Post subfolder / permalink gotcha" below.
 6. Stage the post file and its cover image (`git add <post> static/images/<cover>`)
-7. Commit and push
+7. Run `hugo --minify` and confirm it's clean, then commit and push
 
 ## Tag vocabulary
 
@@ -111,7 +111,7 @@ Every post page shows a "BOOKS" section (after the tags, before the prev/next ca
 
 ## Obsidian wikilink images
 
-Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `layouts/_default/single.html` strips these at render time via regex, so they don't appear on the live site — but clean them from the source anyway. Post images belong in the `cover:` frontmatter block, not in the body.
+Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `layouts/_default/single.html` strips these at render time via regex, but only when the wikilink is alone in its paragraph — one sharing a paragraph with text shows up on the live site as literal text. The regex only touches the rendered body, so even a stripped wikilink still leaks into the JSON-LD `articleBody` and the RSS feed. Always clean them from the source. Post images belong in the `cover:` frontmatter block, not in the body.
 
 ## Files to never commit
 
@@ -129,7 +129,7 @@ Posts drafted in Obsidian may contain `![[filename.jpg]]` inline image syntax. `
 
 ## Post date and UTC gotcha
 
-CI builds run in UTC. If a post's `date:` is set to a date that is still in the future relative to UTC at build time, Hugo silently excludes it — no error, the post just won't appear. Taiwan is UTC+8, so this happens whenever a post is published after **8 PM Taiwan time**: the local date has already rolled over to the next day, but UTC hasn't. Always use the UTC calendar date in `date:` frontmatter. When in doubt, use yesterday's date.
+`hugo.toml` sets no `timeZone`, so a date-only `date:` means midnight UTC. If that moment is still in the future at build time, Hugo silently excludes the post — no error, it just won't appear. Taiwan is UTC+8, so this happens when a post is dated with the Taiwan date between **midnight and 8 AM Taiwan time**: the local date has rolled over, but UTC hasn't. Always use the UTC calendar date (`date -u +%F`). The workflow only runs on push or manual dispatch, so a post excluded this way stays hidden until the next build.
 
 ## Language / SEO settings
 
@@ -137,9 +137,9 @@ CI builds run in UTC. If a post's `date:` is set to a date that is still in the 
 
 ## Image path gotcha
 
-The site lives at a subdirectory (`/the-sloth/`). Hugo's `relURL` resolves cover image paths correctly at build time, so always write cover paths as `/images/filename` — not as full URLs and not with `/the-sloth/` prepended.
+The site lives at a subdirectory (`/the-sloth/`). `layouts/partials/cover.html` trims the leading `/` before calling `absURL`, which keeps the subdirectory, so always write cover paths as `/images/filename` — not as full URLs and not with `/the-sloth/` prepended.
 
-Exception: `layouts/partials/home_info.html` hardcodes the hero banner path as `/the-sloth/images/hero.png` because it bypasses Hugo's URL processing. If the `baseURL` subdirectory ever changes, update that partial manually.
+Exception: some paths bypass Hugo's URL processing and hardcode `/the-sloth/`: the hero image and RSS link in `layouts/partials/home_info.html`, and the nav icon `mask-image` URLs in `assets/css/extended/custom.css`. If the `baseURL` subdirectory ever changes, update both files manually (`grep -rn 'the-sloth' layouts assets`).
 
 ## OG / Twitter card image URLs
 
@@ -151,5 +151,5 @@ Both templates are overridden in `layouts/partials/templates/` using `strings.Tr
 
 - **Theme config**: `hugo.toml` — PaperMod params, menu, outputs
 - **Styling**: `assets/css/extended/custom.css` — Inter font, light/dark CSS variables, card grid layout, post page layout
-- **Home page**: `layouts/partials/home_info.html` — hero banner + Facebook follow button
+- **Home page**: assembled in `layouts/_default/list.html`. Page 1 runs `home_info.html` (hero banner, Facebook and RSS buttons), then `featured-posts.html` (the 4 newest posts), then `books-carousel.html` (the 12 newest Book posts), then "WHAT'S NEW" (the remaining posts, skipping the 4 featured)
 - **Cover images**: `layouts/partials/cover.html` — responsive srcset logic with fallback for external URLs
