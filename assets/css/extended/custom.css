@@ -625,6 +625,42 @@ a:hover {
     }
 }
 
+/* ── Book category page: book cards in a 4-across grid ──
+   Same column width as the home carousel (4 across, 1.25rem gutters), so a
+   card is the same size in both places. Rows get twice the gutter, giving the
+   1–3 line titles room before the next row of covers. */
+.list .main:has(.books-grid) {
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.5rem 1.25rem;
+    align-items: start;
+}
+
+.books-grid + .page-footer {
+    margin-top: 3rem;
+}
+
+@media (max-width: 900px) {
+    .books-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .books-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem 1rem;
+    }
+
+    .books-grid .book-card-title {
+        font-size: 0.88rem;
+    }
+}
+
 @media (max-width: 768px) {
     .section-title {
         font-size: 2.4rem;

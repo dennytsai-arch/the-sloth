@@ -15,14 +15,7 @@
   </div>
   <div class="books-track">
     {{- range . }}
-    <article class="book-card">
-      {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" false) }}
-      <h3 class="book-card-title">{{ .Title }}</h3>
-      <footer class="entry-footer">
-        {{- partial "post_meta.html" . -}}
-      </footer>
-      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-    </article>
+    {{- partial "book-card.html" . }}
     {{- end }}
   </div>
 </section>

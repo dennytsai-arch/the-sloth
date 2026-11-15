@@ -46,7 +46,14 @@
 {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
 {{- end }}
 
-{{- $paginator := .Paginate $pages }}
+{{- /* The Book category page is a 4-across grid of book cards; 12 per page keeps the rows full */ -}}
+{{- $isBookTerm := and (eq .Kind "term") (eq .Type "categories") (eq (lower .Title) "book") }}
+{{- $paginator := "" }}
+{{- if $isBookTerm }}
+{{- $paginator = .Paginate $pages 12 }}
+{{- else }}
+{{- $paginator = .Paginate $pages }}
+{{- end }}
 
 {{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
 {{- partial "home_info.html" . }}
@@ -64,6 +71,13 @@
 {{- if .IsHome }}
 <h2 class="section-title">WHAT'S NEW</h2>
 {{- end }}
+{{- if $isBookTerm }}
+<div class="books-grid">
+{{- range $paginator.Pages }}
+{{- partial "book-card.html" . }}
+{{- end }}
+</div>
+{{- else }}
 <div class="posts-list">
 {{- range $index, $page := after $featuredCount $paginator.Pages }}
 
@@ -111,6 +125,7 @@
 </article>
 {{- end }}
 </div>
+{{- end }}
 
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">
