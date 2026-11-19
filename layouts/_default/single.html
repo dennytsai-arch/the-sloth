@@ -2,7 +2,6 @@
 
 <article class="post-single">
   <header class="post-header">
-    {{ partial "breadcrumbs.html" . }}
     {{- with (.GetTerms "categories") }}
     <div class="post-category-wrap">
       {{- range . }}<a href="{{ .Permalink }}" class="post-category post-category-{{ .LinkTitle | lower }}">{{ .LinkTitle }}</a>{{- end }}
