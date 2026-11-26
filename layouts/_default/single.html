@@ -47,6 +47,13 @@
   </div>
   {{- end }}
 
+  {{- if eq .Section "posts" }}
+  <aside class="bmc-support">
+    <p class="bmc-support-text">喜歡這篇文章嗎？請 The Sloth 喝杯咖啡，支持慢慢寫下去。</p>
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="futurenote" data-color="#FF5F5F" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script>
+  </aside>
+  {{- end }}
+
   <footer class="post-footer">
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">
