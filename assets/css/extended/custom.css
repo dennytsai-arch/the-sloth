@@ -1148,30 +1148,6 @@ a:hover {
     gap: 1rem;
 }
 
-.bmc-support-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
-
-.bmc-support-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    font-size: 1.3rem;
-    background: linear-gradient(135deg, #ffe58a, #ffdd00);
-    border-radius: 50%;
-}
-
-.bmc-support-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: var(--primary);
-}
-
 .bmc-support .bmc-btn-container {
     display: flex;
     justify-content: center;
