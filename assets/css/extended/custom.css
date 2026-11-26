@@ -1091,26 +1091,106 @@ a:hover {
     }
 }
 
-/* ── Buy Me a Coffee support block (post pages) ── */
+/* ── Buy Me a Coffee support card (post pages) ── */
 .bmc-support {
-    display: flex;
-    flex-direction: column;
+    --bmc-badge: #b8684a;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: 0.75rem;
-    margin: 2.5rem 0 1rem;
-    padding: 1.5rem 1rem;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    text-align: center;
+    gap: 2rem;
+    margin: 3rem 0 1rem;
+    padding: 2rem 2.25rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+}
+
+:root[data-theme="dark"] .bmc-support {
+    --bmc-badge: #c97a5c;
+}
+
+.bmc-support-body {
+    min-width: 0;
+}
+
+.bmc-support-badge {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    background: var(--bmc-badge);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: 999px;
+}
+
+.bmc-support-title {
+    margin: 0.85rem 0 0.6rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+    color: var(--primary);
 }
 
 .bmc-support-text {
     margin: 0;
     font-size: 0.95rem;
+    line-height: 1.9;
     color: var(--secondary);
+}
+
+.bmc-support-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bmc-support-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.bmc-support-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #ffe58a, #ffdd00);
+    border-radius: 50%;
+}
+
+.bmc-support-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--primary);
 }
 
 .bmc-support .bmc-btn-container {
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 640px) {
+    .bmc-support {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem 1.25rem;
+        border-radius: 18px;
+    }
+
+    .bmc-support-title {
+        font-size: 1.15rem;
+    }
+
+    .bmc-support-action {
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--border);
+    }
 }

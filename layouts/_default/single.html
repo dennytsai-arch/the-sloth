@@ -48,9 +48,19 @@
   {{- end }}
 
   {{- if eq .Section "posts" }}
-  <aside class="bmc-support">
-    <p class="bmc-support-text">喜歡這篇文章嗎？請 The Sloth 喝杯咖啡吧！</p>
-    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="futurenote" data-color="#FF5F5F" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script>
+  <aside class="bmc-support" aria-label="支持 The Sloth">
+    <div class="bmc-support-body">
+      <span class="bmc-support-badge">支持緩慢前進的書店</span>
+      <p class="bmc-support-title">喜歡這篇文章嗎？請 The Sloth 喝杯咖啡吧！</p>
+      <p class="bmc-support-text">The Sloth 慢慢整理設計、科技與閱讀裡值得停下來想一想的事。如果這些文字曾經陪你度過一段時間，一杯咖啡就能讓這間懶惰書店繼續營業下去。</p>
+    </div>
+    <div class="bmc-support-action">
+      <div class="bmc-support-brand">
+        <span class="bmc-support-mark" aria-hidden="true">☕</span>
+        <span class="bmc-support-name">The Sloth</span>
+      </div>
+      <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="futurenote" data-color="#FF5F5F" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script>
+    </div>
   </aside>
   {{- end }}
 
