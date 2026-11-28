@@ -94,7 +94,7 @@ Tags drive the post-page BOOKS recommendation (see below), so consistency matter
 - **Tech/AI**: `ai`, `technology`, `apple`, `startup`, `accessibility`
 - **Design**: `design-practice` (applied/product design — *not* `design`, which collides with the `Design` category), `design-theory`
 - **Business/econ**: `brand`, `finance`, `future-of-work`, `management`, `retail`, `geopolitics`, `globalization`
-- **Culture/society**: `culture`, `identity`, `family`, `sports`, `music`, `film`, `art`, `literature`
+- **Culture/society**: `culture`, `politics`, `media`, `identity`, `family`, `sports`, `music`, `film`, `art`, `literature`
 - **Place**: `japan`, `taiwan`
 - **Other**: `wellness`, `sustainability`, `space`, `education`
 
